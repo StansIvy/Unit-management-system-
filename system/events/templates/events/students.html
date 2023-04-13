@@ -1,0 +1,37 @@
+{% extends 'events/main.html'%}
+
+{% load static %}
+{% block content %}
+
+<body style="background-image:url('{% static 'images/image5.jpg' %}');background-repeat:no-repeat;background-size:100;">
+
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card-body">
+            <h5>Welcome To Students Dashboard</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+                {% for i in students %}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>{{i.email}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}
+
+</body>
+
+

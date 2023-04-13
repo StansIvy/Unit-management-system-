@@ -1,0 +1,40 @@
+{% extends 'events/main.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>LectureNotes</h2>
+  {% endblock %}
+
+  <div class="card card-body">
+            <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Download</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>
+            <a href=" " class="btn btn-primary btn-sm" target="_blank">
+              Download PDF
+            </a>
+          </td>
+          <td>
+            <form method="post" action="{% url 'delete_book' book.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+  </div>

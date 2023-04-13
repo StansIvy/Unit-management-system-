@@ -1,0 +1,38 @@
+{% extends 'events/main.html'%}
+
+{%load static%}
+{% block content %}
+
+<body style="background-image:url('{% static 'images/image5.jpg' %}');background-repeat:repeat;background-size:100;">
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card-body">
+            <h5>Semester Units</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Teacher</th>
+                    <th>UnitName</th>
+                    <th>UnitCode</th>
+
+                </tr>
+                {% for i in units %}
+                <tr>
+                    <td>{{i.teacher}}</td>
+                    <td>{{i.unitname}}</td>
+                    <td>{{i.unitcode}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}
+</body>
+
+
+
+

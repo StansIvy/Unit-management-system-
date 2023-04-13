@@ -1,0 +1,60 @@
+{% extends 'events/main.html'%}
+{% load static %}
+{% block content %}
+{% include 'events/status.html'%}
+<body style="background-image:url('{% static 'images/image5.jpg' %}');background-repeat:no-repeat;background-size:100;">
+
+
+<br>
+<div class ='row'>
+    <div class="col-md-5">
+        <h5>LECTURERS:</h5>
+        <hr>
+        <div class="'card card-body">
+            <a class="btn btn-primary btn-sm btn-block "  href="">Semester Lecturers</a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Lecturer Name</th>
+                    <th>Lecturer Phone</th>
+                </tr>
+                {%for i in teachers %}
+                   <tr>
+                       <td><a class="btn btn-sm btn-info" href="{% url 'teacher' i.id %}">AlterInfo</a> </td>
+                       <td>{{i.name}}</td>
+                       <td>{{i.phone}}</td>
+
+                   </tr>
+                {% endfor%}
+
+            </table>
+        </div>
+    </div>
+     <div class="col-md-7">
+        <h5>SEMESTER UNITS</h5>
+        <hr>
+        <div class="'card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Unit Name</th>
+                    <th>Date Created</th>
+                    <th>Unit Code</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+
+                </tr>
+                {%for i in units %}
+                   <tr>
+                       <td>{{i.unitname}}</td>
+                       <td>{{i.date_created }}</td>
+                       <td>{{i.unitcode}}</td>
+                       <td><a class="btn btn-sm btn-info" href="{% url 'update_unit' i.id %}">Update</a> </td>
+                       <td><a class="btn btn-sm btn-danger" href="{% url 'delete_unit' i.id %}">Delete</a> </td>
+                   </tr>
+                {% endfor%}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
